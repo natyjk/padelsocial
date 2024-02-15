@@ -1,0 +1,23 @@
+{% extends './layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <h2>Hola!</h2>
+
+    <h4>¿Qué quieres revisar?:</h4>
+
+    <form action="{{ url_for('menu_inicio') }}" method="post">
+        <input type="radio" name="opcion" value="torneos_cargados"> Ver torneos cargados <br>
+        <input type="radio" name="opcion" value="revisar_jugadores"> Revisar Jugadores <br>
+        <input type="radio" name="opcion" value="resultados_persona"> Ver resultados personales <br>
+        <input type="radio" name="opcion" value="metricas_generales"> Ver métricas generales <br>
+        <button type="submit">Ver</button>
+    </form>
+
+</div>
+
+{% endblock %}
+

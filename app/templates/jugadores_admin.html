@@ -1,0 +1,64 @@
+{% extends './layout.html' %}
+
+{% block title %}Jugadores Admin{% endblock %}
+
+
+{% block body %}
+
+<h1 class="container md">Agrupar Jugadores</h1>
+
+<!-- Agregar el cuadro de texto y el botón de búsqueda -->
+<div class="container md">
+  <div class="row">
+    <!-- Input para ingresar la palabra de búsqueda -->
+    <input type="text" class="form-control" placeholder="Buscar jugador..." id="inputBuscar">
+    <div class="input-group-append">
+      <!-- Botón para realizar la búsqueda -->
+      <button class="btn btn-primary m-2" type="button" onclick="buscarNombres()">Buscar</button>
+      <!-- Botón para borrar los filtros -->
+      <button class="btn btn-outline-primary m-2" type="button" onclick="borrarFiltros()">Borrar Filtros</button>
+    </div>
+  </div>
+</div>
+
+
+<div id="areaAgrupacion" class="container md">
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Nombres Disponibles</h5>
+            <p style="font-size: small; color: red;">
+                Selecciona todos los nombres que quieres asignar a un sólo jugador</p>
+            <ul id="listaIzquierda" class="list-group">
+                <!-- Los nombres se cargarán dinámicamente desde Flask -->
+            </ul>
+            <button class="btn btn-primary mt-3" onclick="agruparNombres()">Agrupar Nombres</button>
+        </div>
+
+        <div class="col-md-6">
+            <h5>Jugador único</h5>
+            <p style="font-size: small; color: red;">
+                Selecciona SÓLO UN jugador. Si no lo encuentras, CREA UN NUEVO jugador único</p>
+            <ul id="listaDerecha" class="list-group">
+                <!-- El nombre seleccionado se mostrará aquí -->
+            </ul>
+            <button id="btnNuevoJugador" class="btn btn-outline-success mt-3" onclick="crearNuevoUsuario()">Crear Nuevo Jugador único</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Área dinámica para mostrar el nombre seleccionado y el formulario de actualización -->
+<div id="areaActualizacion" class="container md" style="display: none;">
+    <!-- Formulario para actualizar -->
+    <div class="col-md-6">
+        <label for="nombreInput">Nombre:</label>
+        <input type="text" id="nombreInput" class="form-control" placeholder="Nombre">
+        <label for="apellidoInput">Apellido:</label>
+        <input type="text" id="apellidoInput" class="form-control" placeholder="Apellido">
+        <button class="btn btn-success mt-3" onclick="crearJugador()">Crear Jugador</button>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/jugadores_admin.js') }}"></script>
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends './layout.html' %}
+
+{% block title %}Métricas por jugador{% endblock %}
+
+{% block body %}
+
+<!-- Header -->
+    <header>
+        <!-- Aquí va tu header -->
+    </header>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <!-- <h1>Métricas de Usuario</h1> -->
+
+        <!-- Dropdown para seleccionar usuarios -->
+        <div class="form-group">
+            <label for="dropdown-usuarios">Seleccionar Jugador:</label>
+            <select id="dropdown-usuarios" class="form-control">
+                <!-- Opciones se cargarán dinámicamente desde Python -->
+            </select>
+        </div>
+
+        <div id="contenidoOculto" style="display: none;">
+            <!-- Tabla de resumen de métricas -->
+            <h2 id="tituloJugador">[Nombre del jugador]</h2>
+
+            <div class="table-responsive table-borderless">
+                <table id="tablaResumen" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <!-- Encabezados de la tabla -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Filas de la tabla se cargarán dinámicamente desde Python -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-3">
+                        <h4>Torneos jugados por año</h4>
+                        <div id="grafico1" class="grafico-container">
+
+                            <!-- Aquí se mostrará el primer gráfico -->
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <h4>Torneos jugados por categoría</h4>
+                        <div id="grafico2" class="grafico-container">
+                            <!-- Aquí se mostrará el segundo gráfico -->
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <h4>Principales clubes jugados</h4>
+                        <div id="grafico3" class="grafico-container">
+                            <!-- Aquí se mostrará el tercer gráfico -->
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <h4>Principales parejas Torneos</h4>
+                        <div id="grafico4" class="grafico-container">
+                            <!-- Aquí se mostrará el tercer gráfico -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+
+            <div>
+                <h2>Detalle torneos jugados:</h2>
+                <table id="tablaTorneos">
+                    <!-- El contenido de la tabla se cargará dinámicamente desde Flask -->
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Agregar script personalizado para cargar datos y manejar eventos -->
+    <script src="{{ url_for('static', filename='js/metricas_usuario.js') }}"></script>
+
+
+{% endblock %}
+

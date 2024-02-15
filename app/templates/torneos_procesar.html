@@ -1,0 +1,74 @@
+{% extends './layout.html' %}
+
+{% block title %}Torneos Admin{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <h1>Torneos</h1>
+
+        <!-- Botón de Scrapear -->
+        <button type="button" class="btn btn-primary" onclick="ScrapearTorneos()">Scrapear Torneos</button>
+        <button type="button" class="btn btn-primary onclick="actualizarJugadores()">Actualizar Jugadores</button>
+        <br>
+        <br>
+
+        <!-- Filtros -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="filtroAno">Año:</label>
+                    <select id="filtroAno" class="form-control" onchange="filtrarTabla()">
+                        <option value="">Seleccionar...</option>
+                        <!-- Opciones se cargarán dinámicamente desde Flask -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="filtroLugar">Lugar:</label>
+                    <select id="filtroLugar" class="form-control" onchange="filtrarTabla()">
+                        <option value="">Seleccionar...</option>
+                        <!-- Opciones se cargarán dinámicamente desde Flask -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="filtroStatus">Estado Torneo:</label>
+                    <select id="filtroStatus" class="form-control" onchange="filtrarTabla()">
+                        <option value="">Seleccionar...</option>
+                        <!-- Opciones se cargarán dinámicamente desde Flask -->
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabla -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="select-all"></th>
+                    <th>Año</th>
+                    <th>Fecha</th>
+                    <th>Nombre Torneo</th>
+                    <th>Lugar</th>
+                    <th>Partidos cargados</th>
+                    <th>Status</th>
+                    <!-- Agrega más columnas según tu DataFrame -->
+                </tr>
+            </thead>
+            <tbody id="tabla-body">
+                <!-- Filas de la tabla se cargarán dinámicamente desde Flask -->
+            </tbody>
+        </table>
+
+
+    </div>
+
+<script src="{{ url_for('static', filename='js/torneos_procesar.js') }}"></script>
+
+{% endblock %}
+

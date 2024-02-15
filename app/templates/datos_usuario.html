@@ -1,0 +1,27 @@
+{% extends './layout.html' %}
+
+{% block title %}Datos Usuario{% endblock %}
+
+
+{% block body %}
+<h1>Datos Usuario</h1>
+
+<div>
+    <label for="usuariosDropdown">Selecciona un jugador:</label>
+    <select id="usuariosDropdown" onchange="cargarTabla()">
+
+        <!-- El contenido del menú se cargará dinámicamente desde Flask -->
+    </select>
+</div>
+
+<div>
+    <h2>Torneos jugados:</h2>
+    <table id="tablaTorneos">
+        <!-- El contenido de la tabla se cargará dinámicamente desde Flask -->
+    </table>
+</div>
+
+
+<script src="{{ url_for('static', filename='js/datos_usuario.js') }}"></script>
+
+{% endblock %}

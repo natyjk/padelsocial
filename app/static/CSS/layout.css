@@ -1,0 +1,150 @@
+body {
+  background-color: #f0f5ff;
+  font-family: 'Jost',sans-serif;
+  color: #232c3d;
+  margin: 20px;
+}
+
+.container {
+      text-align: center;
+      margin-top: 30px;
+}
+
+
+.list-group {
+        min-height: 300px; /* Altura mínima para las columnas */
+        max-height: 300px; /* Ajusta la altura máxima según tus necesidades */
+        background-color: white; /* Fondo blanco en las listas */
+        overflow-y: auto;
+}
+
+.list-group-item {
+    border: 1px solid #ced4da; /* Borde para los elementos de la lista */
+    background-color: white; /* Fondo blanco en las listas */
+}
+
+/* Estilo para elementos seleccionados */
+.list-group-item.seleccionado {
+    background-color: lightblue !important; /* Resaltar el nombre seleccionado */
+}
+
+textarea {
+      width: 800px;
+      height: 80px;
+    }
+
+button {
+  margin-top: 20px;
+    }
+
+
+#resultado {
+      margin-top: 20px;
+    }
+
+
+#contador {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+th {
+    background-color: #f2f2f2;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.columna {
+    flex: 1;
+    margin-right: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.seleccionado {
+    background-color: #e0e0e0;
+}
+/*
+.columna ul {
+    list-style: none;
+    padding: 0;
+}
+*/
+
+.columna li {
+    background-color: white;
+    padding: 8px;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.columna li.seleccionado {
+    background-color: blue;
+    color: white; /* Cambia el color del texto al seleccionar */
+}
+
+.nombre-seleccionado {
+    font-size: 18px; /* Tamaño de fuente más grande */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilo para el dropdown */
+#usuariosDropdown {
+    font-size: 16px; /* Tamaño de la letra */
+    margin-top: 10px; /* Margen superior */
+    margin-left: 10px; /* Margen superior */
+    width: 200px; /* Ancho del cuadro blanco */
+    height: 30px; /* Ancho del cuadro blanco */
+}
+
+/* styles.css */
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+#filtros {
+    margin-bottom: 20px;
+}
+
+
+#tablaResumen th,
+#tablaResumen td {
+    text-align: center;
+}
+
+/* Estilo personalizado para el canvas dentro de los contenedores de gráficos */
+.grafico-container canvas {
+    max-width: 100%; /* Establecer el ancho máximo al 100% del contenedor */
+    height: auto; /* Ajustar automáticamente la altura */
+}
+.grafico-container {
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 10px;
+}
+

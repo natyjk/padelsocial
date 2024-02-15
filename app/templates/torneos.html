@@ -1,0 +1,18 @@
+{% extends './layout.html' %}
+
+{% block title %}Torneos Admin{% endblock %}
+
+
+{% block body %}
+    <div id="actualizarDiv">
+        <button id="btnActualizarJugadores" onclick="actualizarJugadores()">Actualizar Jugadores</button>
+    </div>
+
+<h1>Torneos</h1>
+
+{{ torneos_html | safe }}
+
+<script src="{{ url_for('static', filename='js/torneos.js') }}"></script>
+
+{% endblock %}
+
