@@ -2,13 +2,13 @@ import pandas as pd
 from sqlalchemy import create_engine, text as sql_text
 from sqlalchemy.sql import text
 from config.settings import config_bbdd
-from dotenv import load_dotenv
-import os
+#from dotenv import load_dotenv
+#import os
 from os import environ
 import unicodedata
 
 
-load_dotenv()
+#load_dotenv()
 
 class Database:
     def __init__(self,
@@ -21,11 +21,13 @@ class Database:
         str_conn = 'postgresql://{0}:@{1}:{2}/{3}'.format(
             user, host, port, database
         )
+        print('STR CONexion BBDD')
+        print(str_conn)
 
         self.connection = create_engine(str_conn)
 
     def get_torneos_data(self):
-        sql = """select 
+        sql = """select
                     t.*,
                     count(p.*) as partidos
                 from
@@ -35,7 +37,7 @@ class Database:
                     on p.id_torneo = t.id_torneo
                 group by
                     t.id_torneo
-                order by 
+                order by
                     t.fecha_ano asc, t.fecha_mes desc, t.id_torneo desc;"""
         try:
             df = pd.read_sql_query(con=self.connection.connect(),
@@ -46,11 +48,11 @@ class Database:
         return df
 
     def get_info_torneo(self, id_torneo):
-        sql = """select 
+        sql = """select
                     *
                 from
                     torneos t
-                where 
+                where
                     t.id_torneo = '{}';""".format(id_torneo)
         try:
             df = pd.read_sql_query(con=self.connection.connect(),
@@ -102,11 +104,11 @@ class Database:
         return result
 
     def select_jugadores(self, texto_buscado):
-        sql = """SELECT j.* 
+        sql = """SELECT j.*
                 FROM jugadores j
                 LEFT JOIN union_jugadores ju
                     ON j.id_jugador = ju.id_jugador
-                WHERE 
+                WHERE
                     j.nombre_jugador LIKE '%{0}%'
                     AND ju.id_jugador IS NULL
                 ORDER BY
@@ -131,11 +133,11 @@ class Database:
         return df
 
     def get_id_jugador(self, nombre_jugador):
-        sql = """select 
+        sql = """select
                     t.id_jugador
                 from
                     jugadores t
-                where 
+                where
                     t.nombre_jugador = '{}';""".format(nombre_jugador)
         try:
             df = pd.read_sql_query(con=self.connection.connect(),
@@ -149,11 +151,11 @@ class Database:
         return id_jugador
 
     def get_id_jugador_unico(self, nombre_completo):
-        sql = """select 
+        sql = """select
                     t.id_jugador_unico
                 from
                     jugadores_unicos t
-                where 
+                where
                     t.nombre_completo = '{}';""".format(nombre_completo)
         try:
             df = pd.read_sql_query(con=self.connection.connect(),
@@ -206,7 +208,7 @@ class Database:
     def obtener_lista_jugadores(self):
         sql = """select ju.*
                 from
-                    jugadores_unicos ju                 
+                    jugadores_unicos ju
                 order by
                     ju.nombre_completo asc;"""
         try:
@@ -276,7 +278,7 @@ class Database:
 
         nombre_completo_limpio = nombre_editado + apellido_editado
         nombre_completo = '{0} {1}'.format(nombre, apellido)
-        sql = """INSERT INTO jugadores_unicos (nombre, apellido, nombre_completo, nombre_completo_limpio) 
+        sql = """INSERT INTO jugadores_unicos (nombre, apellido, nombre_completo, nombre_completo_limpio)
                 VALUES('{0}','{1}','{2}','{3}')
                 RETURNING id_jugador_unico""".format(nombre, apellido, nombre_completo, nombre_completo_limpio)
 

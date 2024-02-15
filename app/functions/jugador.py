@@ -1,21 +1,21 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from bs4 import BeautifulSoup
-from selenium.webdriver.common.keys import Keys
-import time
-from selenium.webdriver.common.action_chains import ActionChains
-import pandas as pd
+#from selenium import webdriver
+#from selenium.webdriver.common.by import By
+#from selenium.webdriver.support.ui import WebDriverWait
+#from selenium.webdriver.support import expected_conditions as EC
+#from bs4 import BeautifulSoup
+#from selenium.webdriver.common.keys import Keys
+#import time
+#from selenium.webdriver.common.action_chains import ActionChains
+#import pandas as pd
 
-from dotenv import load_dotenv
-from os import environ
+#from dotenv import load_dotenv
+#from os import environ
 from functions.database import Database
 from functions import graficos as gr
 import base64
 from io import BytesIO
 
-load_dotenv()
+#load_dotenv()
 
 class Jugador:
     def __init__(self, id_jugador_unico):

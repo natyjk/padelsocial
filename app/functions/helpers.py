@@ -1,11 +1,11 @@
 import pandas as pd
-from dotenv import load_dotenv
-import os
-from os import environ
+#from dotenv import load_dotenv
+#import os
+#from os import environ
 from functions.database import Database
 from functions.torneos import Torneo
 
-load_dotenv()
+#load_dotenv()
 
 
 def opciones_home(opcion_seleccionada):

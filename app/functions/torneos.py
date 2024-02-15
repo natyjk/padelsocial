@@ -1,18 +1,18 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+#from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
-from selenium.webdriver.common.keys import Keys
+#from selenium.webdriver.common.keys import Keys
 import time
-from selenium.webdriver.common.action_chains import ActionChains
+#from selenium.webdriver.common.action_chains import ActionChains
 import pandas as pd
 
-from dotenv import load_dotenv
-from os import environ
+#from dotenv import load_dotenv
+#from os import environ
 from functions.database import Database
 
-load_dotenv()
+#load_dotenv()
 
 class Torneo:
     def __init__(self, id_torneo):
