@@ -1,4 +1,5 @@
 import pandas as pd
+#from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine, text as sql_text
 from sqlalchemy.sql import text
 from config.settings import config_bbdd
@@ -12,19 +13,25 @@ import unicodedata
 
 class Database:
     def __init__(self,
-            host=config_bbdd['host'],
-            database=config_bbdd['database'],
-            port=config_bbdd['port'],
-            user=config_bbdd['user'],
-            password=config_bbdd['pass']):
+            host="natyjk-3661.postgres.pythonanywhere-services.com",
+            database='sportelia',
+            port=3661,
+            user='super',
+            password="N@t4li31"):
 
-        str_conn = 'postgresql://{0}:@{1}:{2}/{3}'.format(
-            user, host, port, database
-        )
+        POSTGRES_URL="natyjk-3661.postgres.pythonanywhere-services.com:13661"
+        POSTGRES_USER="super"
+        POSTGRES_PW="N4t4li31"
+        POSTGRES_DB="postgres"
+
+        DB_URL = 'postgresql://{user}:{pw}@{url}/{db}'.format(user=POSTGRES_USER,pw=POSTGRES_PW,url=POSTGRES_URL,db=POSTGRES_DB)
+
         print('STR CONexion BBDD')
-        print(str_conn)
+        print(DB_URL)
 
-        self.connection = create_engine(str_conn)
+        #str_conn = 'postgresql://super:N@t4li31@natyjk-3661.postgres.pythonanywhere-services.com:13661/postgres'
+
+        self.connection = create_engine(DB_URL)
 
     def get_torneos_data(self):
         sql = """select
@@ -45,7 +52,10 @@ class Database:
 
         except Exception as e:
             raise e
+        print('Result')
+        print(df)
         return df
+
 
     def get_info_torneo(self, id_torneo):
         sql = """select
@@ -222,7 +232,7 @@ class Database:
 
     def get_data_jugador(self, id_jugador_unico):
         nombre_query = 'select_data_general_jugador'
-        sql = open('{0}sportelia/app/static/sql/{1}.sql'.format(environ.get('PROJECT_PATH'), nombre_query), 'r')
+        sql = open('/home/natyjk/padelsocial/app/static/sql/{0}.sql'.format(nombre_query), 'r')
         sql = sql.read().format(id_jugador_unico)
 
         try:
@@ -237,7 +247,7 @@ class Database:
 
     def get_all_data_jugador(self, id_jugador_unico):
         nombre_query = 'select_all_data_jugador'
-        sql = open('{0}sportelia/app/static/sql/{1}.sql'.format(environ.get('PROJECT_PATH'), nombre_query), 'r')
+        sql = open('/home/natyjk/padelsocial/app/static/sql/{0}.sql'.format(nombre_query), 'r')
         sql = sql.read().format(id_jugador_unico)
 
         try:
@@ -252,7 +262,7 @@ class Database:
 
     def get_torneos_jugador(self, id_jugador_unico):
         nombre_query = 'select_torneos_jugador'
-        sql = open('{0}sportelia/app/static/sql/{1}.sql'.format(environ.get('PROJECT_PATH'), nombre_query), 'r')
+        sql = open('/home/natyjk/padelsocial/app/static/sql/{0}.sql'.format(nombre_query), 'r')
         sql = sql.read().format(id_jugador_unico)
 
         try:
@@ -287,7 +297,6 @@ class Database:
             print('AQUIIIII')
             print(result)
             id_jugador_unico = result.fetchone()[0]
-            conn.commit()
             conn.close()
 
         return id_jugador_unico

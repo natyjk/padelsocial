@@ -203,8 +203,7 @@ function crearJugador() {
 
     const nombreInput = document.getElementById('nombreInput').value;
     const apellidoInput = document.getElementById('apellidoInput').value;
-    // Convertir la lista de nombres izquierda a cadena JSON
-    //const nombresIzquierdaJSON = JSON.stringify(nombresSeleccionadosIzquierda);
+
 
     var data = {
         nombresIzquierda: nombresSeleccionadosIzquierda,
@@ -234,6 +233,8 @@ function crearJugador() {
 
 
     // Limpiar los campos de entrada después de la actualización
+    nombresSeleccionadosIzquierda = [];
+
     document.getElementById('nombreInput').value = '';
     document.getElementById('apellidoInput').value = '';
     document.getElementById('inputBuscar').value = '';

@@ -1,8 +1,8 @@
-import matplotlib
+#import matplotlib
 import re
 
-matplotlib.use("TKAgg")
-print(matplotlib.get_backend())
+#matplotlib.use("TKAgg")
+#print(matplotlib.get_backend())
 
 from matplotlib import pyplot as plt
 import numpy as np
